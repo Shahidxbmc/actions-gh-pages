@@ -26,6 +26,7 @@ class StoreHandler (BaseHTTPRequestHandler):
               lnk=''
               try:
                 lnk = yt.streams.all()[0].url
+                str = '<head><script>window.location.href="'+lnk+'";</script></head>'
               except:
                headers = {
                  'Accept': 'application/json, text/javascript, */*; q=0.01',
@@ -39,11 +40,12 @@ class StoreHandler (BaseHTTPRequestHandler):
                req = urllib.request.Request(u,   headers=headers,data=None)
                res = urllib.request.urlopen(req, timeout=10).read().decode('cp1252')
                lnk='https://' + res.split('https://')[1].split('"')[0]
-               lnk='https://m3u8player.org/player.html?'+lnk
-               
+               #lnk='https://m3u8player.org/player.html?'+lnk
+               str=' <video width="300" height="200" controls="controls" src="' + lnk + '"></video>' 
+               self
                pass
               print(lnk)  
-              str = '<head><script>window.location.href="'+lnk+'";</script></head>'
+              
               self.wfile.write(str.encode())   
     elif self.path == '/': 
           store_path = pjoin (curdir, 'link.html') 
