@@ -40,6 +40,7 @@ class StoreHandler (BaseHTTPRequestHandler):
                res = urllib.request.urlopen(req, timeout=10).read().decode('cp1252')
                lnk='https://' + res.split('https://')[1].split('"')[0]
                lnk=lnk.replace('file/index.m3u8','')
+               
                pass
               print(lnk)  
               str = '<head><script>window.location.href="'+lnk+'";</script></head>'
