@@ -38,7 +38,7 @@ class StoreHandler (BaseHTTPRequestHandler):
 
                u = 'https://info-tube.zaco.workers.dev/live/' + url.split('=')[1]  +'/live'
                req = urllib.request.Request(u,   headers=headers,data=None)
-               res = urllib.request.urlopen(req, timeout=10).read().decode('cp1252')
+               res = urllib.request.urlopen(req, timeout=10).read().decode('utf-8')
                lnk='https://' + res.split('https://')[1].split('"')[0]
                #lnk='https://m3u8player.org/player.html?'+lnk
                str=' <video width="300" height="200" controls="controls" src="' + lnk + '"></video>' 
