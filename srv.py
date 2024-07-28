@@ -37,6 +37,9 @@ class StoreHandler (BaseHTTPRequestHandler):
                }
 
                u = 'https://info-tube.zaco.workers.dev/live/' + url.split('=')[1]  +'/live'
+               if 'channel' in u:
+                 u=u.replace('/live/' ,'/')
+               print(u)
                req = urllib.request.Request(u,   headers=headers,data=None)
                res = urllib.request.urlopen(req, timeout=10).read().decode('utf-8')
                lnk='https://' + res.split('https://')[1].split('"')[0]
