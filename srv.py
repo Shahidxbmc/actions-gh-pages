@@ -41,7 +41,7 @@ class StoreHandler (BaseHTTPRequestHandler):
                lnk='https://' + res.split('https://')[1].split('"')[0]
                pass
               print(lnk)  
-              str = '<html><head><meta http-equiv="refresh" content="0; url=' + lnk + '"></head></html>'
+              str = '<head><script>window.location.href="'+lnk+'";</script></head>'
               self.wfile.write(str.encode())   
     elif self.path == '/': 
           store_path = pjoin (curdir, 'link.html') 
